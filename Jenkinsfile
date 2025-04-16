@@ -1,15 +1,17 @@
 pipeline {
     agent any
+
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/my-html-project.git'
+                git url: 'https://uvishnuvardhan30001.github.io/portfolio/', credentialsId: 'github-creds'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('my-html-app')
+                    docker.build('portfolio-html')
                 }
             }
         }
